@@ -19,14 +19,14 @@ button:hover:not(:disabled){background:var(--soft)}.primary{background:var(--acc
 header{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:24px}
 .brand{display:flex;align-items:center;gap:12px}.brand-mark{width:36px;height:36px;border:1px solid var(--line);border-radius:10px;display:grid;place-items:center;background:var(--panel);color:var(--accent)}
 h1{font-size:21px;line-height:1.25;letter-spacing:-.6px;margin:0;font-weight:650}.subtitle{margin:3px 0 0;font-size:13px;color:var(--muted)}
-.header-actions,.row{display:flex;align-items:center;gap:8px}.spacer{flex:1}.save-state{font-size:12px;color:var(--muted);margin-right:8px}
+.header-actions,.row{display:flex;align-items:center;gap:8px}.spacer{flex:1}.save-state{font-size:12px;color:var(--muted);margin-right:8px}.save-state.warn{color:var(--danger)}
 .menu{position:relative}.menu summary{list-style:none;cursor:pointer;display:block;border:1px solid var(--line);border-radius:7px;padding:7px 11px;font-weight:550;min-height:34px;background:var(--panel)}
 .menu summary::-webkit-details-marker{display:none}.menu-content{position:absolute;top:calc(100% + 6px);right:0;width:210px;z-index:20;background:var(--panel);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);padding:5px}
 .menu-content button{width:100%;text-align:left;border:0;background:transparent}.menu-content hr{border:0;border-top:1px solid var(--line);margin:5px}
 .layout{display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:20px;align-items:start}
 .workspace{min-width:0}.board-tabs{display:flex;gap:6px;align-items:center;overflow:auto;margin-bottom:12px;padding:1px 1px 3px;scrollbar-width:thin}
-.board-tab{white-space:nowrap;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)}.board-tab.active{color:var(--ink);border-color:var(--accent);background:var(--panel)}
-.board-tab span{max-width:170px;overflow:hidden;text-overflow:ellipsis}.board-tab b{font-size:10px;font-weight:500;background:var(--soft);padding:1px 5px;border-radius:4px}
+.tab{display:flex;align-items:center;white-space:nowrap;border:1px solid var(--line);border-radius:8px;background:var(--soft);flex:none}.tab.active{border-color:var(--accent);background:var(--panel)}.tab-main{display:flex;align-items:center;gap:8px;border:0;background:transparent!important;font-size:12px;color:var(--muted);padding-right:2px}.tab.active .tab-main{color:var(--ink)}.tab-close{border:0;background:transparent;width:24px;min-height:24px;padding:0;margin-right:4px;border-radius:50%;color:var(--muted);font-size:15px;line-height:1}.tab-close:hover{background:var(--line)!important;color:var(--ink)}.tab-new{flex:none;font-size:12px;border-style:dashed;color:var(--muted)}
+.tab-main span{max-width:170px;overflow:hidden;text-overflow:ellipsis}.tab-main b{font-size:10px;font-weight:500;background:var(--soft);padding:1px 5px;border-radius:4px}
 .toolbar{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:10px}
 .tools{display:flex;gap:2px;padding:3px;border:1px solid var(--line);background:var(--panel);border-radius:9px;flex-wrap:wrap}
 .tools button{border:0;min-height:32px;padding:5px 8px;font-size:12px;background:transparent;color:var(--muted);display:flex;align-items:center;gap:5px}
@@ -43,9 +43,9 @@ canvas{display:block;box-shadow:0 2px 12px #0001;border-radius:3px;touch-action:
 .empty-extra{text-align:center;margin-top:10px}.empty-extra button{color:var(--muted)}
 .selection-bar{margin-top:10px;padding:9px 11px;display:flex;align-items:center;flex-wrap:wrap;gap:6px;background:var(--panel);border:1px solid var(--line);border-radius:9px}
 .selection-bar strong{font-size:12px;margin-right:4px}
-.stage-footer{display:flex;align-items:center;gap:8px;margin-top:8px;font-size:11px;color:var(--muted)}
+.stage-footer{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-top:8px;font-size:11px;color:var(--muted)}.stage-footer label,.stage-footer button,#imageSize{white-space:nowrap}
 #screenTitle{background:transparent;border:0;max-width:45%;min-width:80px;font-size:11px;padding:3px;color:var(--muted)}
-.stage-footer label{display:flex;gap:5px;align-items:center;margin-left:auto}.stage-footer input[type=checkbox]{accent-color:var(--accent)}
+.stage-footer label{display:flex;gap:5px;align-items:center}.stage-footer label:first-of-type{margin-left:auto}.stage-footer input[type=checkbox]{accent-color:var(--accent)}
 .panel{border:1px solid var(--line);background:var(--panel);border-radius:12px;overflow:hidden}
 .panel-head{display:flex;align-items:center;gap:8px;padding:14px 14px 10px}.panel-head h2{font-size:14px;margin:0;font-weight:650}
 .count{font-size:11px;color:var(--muted);padding:1px 6px;background:var(--soft);border-radius:4px}.filter{padding:0 14px 10px;display:flex;gap:3px}
@@ -62,8 +62,8 @@ textarea{resize:vertical;min-height:84px;font-size:13px}input,select{font-size:1
 .editor .row label{margin:0}.editor .row select{width:auto;min-width:0;flex:1}.editor .row{margin-bottom:10px}
 .editor details{margin-top:10px}.editor summary{font-size:11px;color:var(--muted);cursor:pointer;padding:4px 0}
 .editor-actions{display:flex;gap:6px;align-items:center;margin-top:12px}.editor-actions .primary{margin-left:auto}
-.target-list{padding:0;margin:6px 0 0;list-style:none}.target-list li{display:flex;align-items:center;gap:6px;font-size:11px;padding:3px 0;color:var(--muted)}.target-list li span{flex:1}
-.target-list button{min-height:22px;padding:0 4px;border:0;color:var(--muted)}.pair{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.target-list{padding:0;margin:6px 0 0;list-style:none}.target-list li{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:11px;padding:3px 0;color:var(--muted)}.target-list li span{flex:1}
+.target-list label{margin:0!important;display:inline-flex!important;align-items:center;gap:3px;color:var(--muted)}.target-list input{width:58px;padding:2px 4px;font-size:11px}#addRow{margin-top:8px}#addRow select{flex:1}.target-list button{min-height:22px;padding:0 4px;border:0;color:var(--muted)}.pair{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .export{border-top:1px solid var(--line);padding:14px}.export .primary{width:100%;margin-top:12px}.export .row{margin-top:7px}.export .row button{flex:1;font-size:12px}
 .export details{margin-top:10px}.export summary{cursor:pointer;font-size:11px;color:var(--muted)}.prompt{margin-top:8px;font:11px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;min-height:190px;background:var(--soft)}
 .check{display:flex!important;align-items:center;gap:6px}.check input{accent-color:var(--accent)}
@@ -71,7 +71,7 @@ textarea{resize:vertical;min-height:84px;font-size:13px}input,select{font-size:1
 .shortcuts{font-size:11px;color:var(--muted);margin:18px 0 0;text-align:center}kbd{font:10px ui-monospace,monospace;border:1px solid var(--line);border-radius:3px;padding:1px 4px;background:var(--panel)}
 dialog{border:1px solid var(--line);border-radius:12px;padding:22px;width:min(440px,calc(100% - 28px));background:var(--panel);color:var(--ink);box-shadow:var(--shadow)}
 dialog::backdrop{background:#0005}dialog h2{font-size:17px;margin:0 0 7px}dialog p{color:var(--muted);font-size:13px}dialog .row{justify-content:flex-end;margin-top:18px}
-@media(max-width:1080px){.layout{grid-template-columns:minmax(0,1fr) 320px}.app{padding:18px}.save-state{display:none}.tools button{padding:5px 6px}}
+@media(max-width:1080px){.layout{grid-template-columns:minmax(0,1fr) 320px}.app{padding:18px}.save-state:not(.warn){display:none}.tools button{padding:5px 6px}}
 @media(max-width:820px){.layout{grid-template-columns:minmax(0,1fr)}.panel{display:flex;flex-direction:column}.note-list{max-height:230px}.stage{height:60vh;min-height:350px}.toolbar{gap:5px}.tools{flex:1}.zoom{margin-left:0}header{margin-bottom:18px}.subtitle{max-width:270px}.brand-mark{display:none}.shortcuts{line-height:2}}
 @media(max-width:470px){.app{padding:14px 10px}.header-actions{gap:3px}.header-actions>button.primary{font-size:12px;padding:6px 8px}.brand h1{font-size:18px}.subtitle{font-size:11px;max-width:185px}.tools button svg{display:none}.tools button{font-size:11px}.stage{padding:14px}.selection-bar .spacer{display:none}.stage-footer{flex-wrap:wrap}.stage-footer label{margin-left:0}.zoom{margin-left:auto}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
@@ -101,6 +101,7 @@ dialog::backdrop{background:#0005}dialog h2{font-size:17px;margin:0 0 7px}dialog
       <button data-tool="group" title="Group (G): click points or drag areas for a shared instruction" aria-pressed="false" disabled><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="4" cy="5" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="8" cy="12" r="2"/></svg>Group</button>
       <button data-tool="move" title="Move (M): drag from current position to destination" aria-pressed="false" disabled><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 13L13 3M8 3h5v5"/><circle cx="3" cy="13" r="1"/></svg>Move</button>
       <button data-tool="arrow" title="Arrow (A): drag an arrow toward an object" aria-pressed="false" disabled><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 13L13 3M7 3h6v6"/></svg>Arrow</button>
+      <button data-tool="redact" title="Redact (R): permanently black out an area of the screenshot" aria-pressed="false" disabled><svg viewBox="0 0 16 16" fill="currentColor"><rect x="2.5" y="4.5" width="11" height="7" rx="1"/></svg>Redact</button>
     </div>
     <div class="history"><button class="icon" id="undoBtn" type="button" title="Undo (⌘/Ctrl Z)" aria-label="Undo" disabled>↶</button><button class="icon" id="redoBtn" type="button" title="Redo (⌘/Ctrl Shift Z)" aria-label="Redo" disabled>↷</button></div>
     <div class="zoom"><button id="zoomOut" type="button" aria-label="Zoom out" disabled>−</button><button id="zoomFit" type="button" title="Fit screenshot (F)" disabled>Fit</button><button id="zoomIn" type="button" aria-label="Zoom in" disabled>＋</button><button id="zoomActual" type="button" title="Actual size (1)" disabled>100%</button></div>
@@ -120,7 +121,7 @@ dialog::backdrop{background:#0005}dialog h2{font-size:17px;margin:0 0 7px}dialog
   </div>
   <div class="stage-footer" id="stageFooter" hidden>
     <input id="screenTitle" type="text" aria-label="Screenshot name" maxlength="160"><span id="imageSize"></span>
-    <label><input id="labelsToggle" type="checkbox">Show full notes</label><button class="small ghost danger" id="removeScreen" type="button">Remove screen</button>
+    <label><input id="refToggle" type="checkbox">Include as reference</label><label><input id="labelsToggle" type="checkbox">Show full notes</label><button class="small" id="redactNumbers" type="button">Redact by numbers…</button><button class="small ghost danger" id="removeScreen" type="button">Remove screen</button>
   </div>
 </section>
 <aside class="panel" id="instructionsPanel" aria-label="Instructions and handoff">
@@ -140,6 +141,7 @@ dialog::backdrop{background:#0005}dialog h2{font-size:17px;margin:0 0 7px}dialog
     <details id="moreDetails"><summary>Target details</summary>
       <label for="noteLocator">Element, file, or URL (optional)</label><input id="noteLocator" type="text" placeholder="e.g. Header.tsx · .primary-action" maxlength="10000">
       <ul class="target-list" id="targetList"></ul><button class="small" id="editTargets" type="button">Add or change targets</button>
+      <div class="row" id="addRow"><select id="addKind" aria-label="Target type to add"><option value="pin">Pin</option><option value="box">Area</option><option value="arrow">Arrow</option><option value="move">Move (pin + offset)</option></select><button class="small" id="addTarget" type="button">Add by coordinates</button></div>
     </details>
     <div class="editor-actions"><button class="small ghost danger" id="deleteNote" type="button">Delete</button><button class="small primary" id="saveNote" type="button">Save instruction</button></div>
   </section>
@@ -148,6 +150,7 @@ dialog::backdrop{background:#0005}dialog h2{font-size:17px;margin:0 0 7px}dialog
     <label for="outputMode">What is this feedback for?</label><select id="outputMode"><option value="implement">Implement changes</option><option value="bugs">Bug report</option><option value="review">Design review</option></select>
     <button class="primary" id="downloadBundle" type="button" disabled>Download handoff</button>
     <div class="row"><button id="copyPrompt" type="button" disabled>Copy brief</button><button id="savePng" type="button" disabled>Save screen PNG</button></div>
+    <p class="export-note" id="handoffSummary"></p>
     <p class="export-note">The handoff includes a brief, annotated screens, and structured feedback. Save an editable project from the Project menu to resume later.</p>
     <details><summary>Export options &amp; brief preview</summary>
       <label class="check"><input type="checkbox" id="includeDone">Include completed instructions</label>
@@ -158,15 +161,17 @@ dialog::backdrop{background:#0005}dialog h2{font-size:17px;margin:0 0 7px}dialog
 </aside>
 </main>
 <div class="status" id="status" role="status" aria-live="polite"></div>
-<p class="shortcuts"><kbd>P</kbd> pin · <kbd>B</kbd> area · <kbd>G</kbd> group · <kbd>M</kbd> move · <kbd>A</kbd> arrow · <kbd>V</kbd> select · <kbd>Space</kbd> + drag to pan · <kbd>F</kbd> fit · <kbd>Esc</kbd> cancel</p>
+<p class="shortcuts"><kbd>P</kbd> pin · <kbd>B</kbd> area · <kbd>G</kbd> group · <kbd>M</kbd> move · <kbd>A</kbd> arrow · <kbd>R</kbd> redact · <kbd>V</kbd> select · <kbd>Space</kbd> + drag to pan · <kbd>F</kbd> fit · <kbd>Esc</kbd> cancel</p>
 <input id="file" type="file" accept="image/*" multiple hidden>
 <input id="projectFile" type="file" accept=".json,application/json" hidden>
 <dialog id="confirmDialog"><h2 id="confirmTitle"></h2><p id="confirmText"></p><div class="row"><button id="confirmNo" type="button">Cancel</button><button class="primary" id="confirmYes" type="button">Continue</button></div></dialog>
-<dialog id="helpDialog"><h2>From screenshot to clear feedback</h2><p>Pin one object or draw an area. Choose Group to select several points or areas, then give them one shared instruction—or move them together.</p><p>Use Select to edit marks or drag them into position. Move arrows run from the source to the destination. Numbered badges stay consistent with the brief, even after edits.</p><p>Write the outcome in the side panel. Add reproduction steps for bugs, current and replacement text for copy edits, or an acceptance check. Mark instructions done as they’re addressed.</p><p>Add desktop, mobile, or reference screenshots as separate boards. Downloads stay on your device; the app has no account or server. Automatic saving depends on your browser’s local storage. Save a project file for a portable copy.</p><div class="row"><button id="closeHelp" type="button">Got it</button></div></dialog>
+<dialog id="redactDialog"><h2>Black out an area</h2><p id="redactNote"></p><div class="pair"><label>x (px)<input id="rx" type="number" step="1"></label><label>y (px)<input id="ry" type="number" step="1"></label><label>width (px)<input id="rw" type="number" step="1"></label><label>height (px)<input id="rh" type="number" step="1"></label></div><div class="row"><button id="redactNo" type="button">Cancel</button><button class="primary" id="redactYes" type="button">Black out permanently</button></div></dialog>
+<dialog id="helpDialog"><h2>From screenshot to clear feedback</h2><p>Pin one object or draw an area. Choose Group to select several points or areas, then give them one shared instruction—or move them together.</p><p>Use Select to edit marks or drag them into position. Move arrows run from the source to the destination. Numbered badges stay consistent with the brief, even after edits.</p><p>Write the outcome in the side panel. Add reproduction steps for bugs, current and replacement text for copy edits, or an acceptance check. Mark instructions done as they’re addressed.</p><p>Add desktop, mobile, or reference screenshots as separate tabs (＋ New to add, × to close; Undo brings a closed tab back). Tick “Include as reference” to send a screenshot without instructions. Redact blacks out an area permanently (Undo cannot restore it) in this screenshot and exports made afterwards; files you already saved or downloaded, and any text you typed, are not changed. Undo history lasts for this session (60 steps). Downloads stay on your device; the app has no account or server. Automatic saving depends on your browser’s local storage. Save a project file for a portable copy.</p><div class="row"><button id="closeHelp" type="button">Got it</button></div></dialog>
 </div>
 <script id="markup-core">
 (function () {
   'use strict';
+  const MAX_PIXELS = 96000000; // ~384 MB decoded RGBA across all retained screenshots
   const TYPES = ['Change','Bug','Move','Align','Spacing','Style','Copy','Remove','Add','Keep'];
   const clone = function (v) { return JSON.parse(JSON.stringify(v)); };
   const finite = function (n) { return typeof n === 'number' && Number.isFinite(n); };
@@ -208,12 +213,14 @@ dialog::backdrop{background:#0005}dialog h2{font-size:17px;margin:0 0 7px}dialog
     if (!s || s.version!==2 || !Array.isArray(s.boards) || s.boards.length>30) throw Error('This is not a supported screenshot project.');
     if (!['implement','bugs','review'].includes(s.mode)) throw Error('Invalid output mode.');
     const out={version:2,context:text(s.context,'context'),mode:s.mode,activeId:s.activeId,boards:[]};
-    const ids=new Set(); let total=0;
+    const ids=new Set(); let total=0,pixels=0;
     s.boards.forEach(function(b){
       if (!b || !finite(b.width)||!finite(b.height)||b.width<1||b.height<1||b.width>16000||b.height>16000||b.width*b.height>48000000||!Number.isInteger(b.width)||!Number.isInteger(b.height)) throw Error('Invalid screenshot dimensions.');
       const bid=id(b.id);if(ids.has(bid))throw Error('Duplicate item ID.');ids.add(bid);
       if(!Array.isArray(b.annotations)||(total+=b.annotations.length)>2000)throw Error('Too many instructions.');
-      const board={id:bid,title:text(b.title,'screenshot name',160),width:b.width,height:b.height,annotations:[],nextNumber:b.nextNumber};
+      if(b.reference!=null&&typeof b.reference!=='boolean')throw Error('Invalid reference flag.');
+      pixels+=b.width*b.height;if(pixels>MAX_PIXELS)throw Error('These screenshots exceed the '+MAX_PIXELS/1e6+' megapixel workspace limit. Save this project, then start a separate one.');
+      const board={id:bid,title:text(b.title,'screenshot name',160),width:b.width,height:b.height,reference:b.reference===true,annotations:[],nextNumber:b.nextNumber};
       const numbers=new Set();let highest=0;
       b.annotations.forEach(function(a){
         if(!a)throw Error('Invalid instruction.');
@@ -243,7 +250,7 @@ dialog::backdrop{background:#0005}dialog h2{font-size:17px;margin:0 0 7px}dialog
     get canUndo(){return this.past.length>0;} get canRedo(){return this.future.length>0;}
     nextId(){let next;do{next='n'+(++this.serial);}while(this.state.boards.some(function(b){return b.id===next||b.annotations.some(function(a){return a.id===next;});}));return next;}
     commit(change){const before=clone(this.state),next=clone(this.state);const result=change(next);const clean=validateProject(next);if(JSON.stringify(before)!==JSON.stringify(clean)){this.past.push(before);if(this.past.length>60)this.past.shift();this.future=[];this.state=clean;}return result;}
-    addBoard(props){const bid=props.id || this.nextId();this.commit(function(s){s.boards.push({id:bid,title:props.title||'Screenshot',width:props.width,height:props.height,annotations:[],nextNumber:1});s.activeId=bid;});return this.state.boards.find(function(b){return b.id===bid;});}
+    addBoard(props){const bid=props.id || this.nextId();this.commit(function(s){s.boards.push({id:bid,title:props.title||'Screenshot',width:props.width,height:props.height,reference:false,annotations:[],nextNumber:1});s.activeId=bid;});return this.state.boards.find(function(b){return b.id===bid;});}
     updateBoard(bid,patch){this.commit(function(s){const b=s.boards.find(function(b){return b.id===bid;});if(!b)throw Error('Screenshot not found.');Object.assign(b,patch);});}
     deleteBoard(bid){this.commit(function(s){s.boards=s.boards.filter(function(b){return b.id!==bid;});if(s.activeId===bid)s.activeId=s.boards.length?s.boards[0].id:null;});}
     addAnnotation(bid,props){const aid=this.nextId();this.commit(function(s){const b=s.boards.find(function(b){return b.id===bid;});if(!b)throw Error('Screenshot not found.');const number=b.nextNumber++;b.annotations.push(Object.assign({type:'Change',text:'',priority:'normal',done:false,targets:[],move:null,expected:'',steps:'',actual:'',locator:''},props,{id:aid,number:number}));});return this.state.boards.find(function(b){return b.id===bid;}).annotations.find(function(a){return a.id===aid;});}
@@ -251,6 +258,7 @@ dialog::backdrop{background:#0005}dialog h2{font-size:17px;margin:0 0 7px}dialog
     deleteAnnotation(bid,aid){this.commit(function(s){const b=s.boards.find(function(b){return b.id===bid;});if(!b)throw Error('Screenshot not found.');b.annotations=b.annotations.filter(function(a){return a.id!==aid;});});}
     setContext(value){this.commit(function(s){s.context=value;});}
     setMode(value){this.commit(function(s){s.mode=value;});}
+    imageIds(){const ids=new Set();[this.state].concat(this.past,this.future).forEach(function(s){s.boards.forEach(function(b){ids.add(b.id);});});return ids;}
     undo(){if(!this.canUndo)return false;this.future.push(clone(this.state));this.state=this.past.pop();return true;}
     redo(){if(!this.canRedo)return false;this.past.push(clone(this.state));this.state=this.future.pop();return true;}
     replace(value){const next=validateProject(value);this.commit(function(s){Object.assign(s,next);});}
@@ -263,19 +271,26 @@ dialog::backdrop{background:#0005}dialog h2{font-size:17px;margin:0 0 7px}dialog
     return 'Point at '+coord(t.x,t.y,b)+'.';
   }
   function imageName(index){return 'screen-'+(index+1)+'-annotated.png';}
+  // User text is data, not markup: neutralise links, images, raw HTML and code fences.
+  const lit=function(v){return v.replace(/\\(?=[\\\[\]<`])/g,'\\\\').replace(/[\[\]<`]/g,'\\$&');};
+  const eol=function(v){return lit(v.replace(/\r\n?/g,'\n'));};
+  const one=function(v){return eol(v).replace(/\s*\n\s*/g,' ').trim();};
+  const exact=function(v){return v&&v===v.trim()&&!/[\r\n]/.test(v)?lit(v):lit(JSON.stringify(v));};
+  const included=function(b,includeDone){return b.reference||b.annotations.some(function(a){return includeDone||!a.done;});};
   function buildPrompt(state,options) {
     const includeDone=!!(options&&options.includeDone);
     const title={implement:'Visual implementation brief',bugs:'Visual bug report',review:'Design review brief'}[state.mode];
     const out=['# '+title,''];
-    if(state.context)out.push('Context: '+state.context,'');
+    if(one(state.context))out.push('Context: '+one(state.context),'');
     out.push('Coordinates refer to screenshot pixels and percentages, with (0, 0) at the top-left. They identify visual targets, not CSS values. Preserve responsive layout when implementing changes.','');
     let count=0;
     state.boards.forEach(function(b,i){
-      const anns=b.annotations.filter(function(a){return includeDone||!a.done;});if(!anns.length)return;
-      out.push('## '+b.title,'','Image: '+imageName(i)+' ('+b.width+' × '+b.height+' px). Badges use the stable instruction number; grouped targets add letters. General instructions have no canvas mark.','');
+      const anns=b.annotations.filter(function(a){return includeDone||!a.done;});if(!anns.length&&!b.reference)return;
+      if(!anns.length){out.push('## '+one(b.title),'','Image: '+imageName(i)+' ('+b.width+' × '+b.height+' px). Reference screenshot: it has no instructions of its own; use it for comparison.','');return;}
+      out.push('## '+one(b.title),'','Image: '+imageName(i)+' ('+b.width+' × '+b.height+' px). Badges use the stable instruction number; grouped targets add letters. General instructions have no canvas mark.','');
       anns.forEach(function(a){
-        count++;out.push('### #'+a.number+' · '+a.type+(a.priority==='high'?' · High priority':'')+(a.done?' · Completed':''),'',a.text || '(See marked targets.)');
-        if(a.locator)out.push('- Element / file / URL: '+a.locator);
+        count++;out.push('### #'+a.number+' · '+a.type+(a.priority==='high'?' · High priority':'')+(a.done?' · Completed':''),'',a.text ? '> '+eol(a.text).replace(/\n/g,'\n> ') : '(See marked targets.)');
+        if(one(a.locator))out.push('- Element / file / URL: '+one(a.locator));
         if(a.targets.length>1)out.push('- Apply this instruction to all '+a.targets.length+' targets.');
         if(!a.targets.length)out.push('- Scope: the whole screenshot.');
         a.targets.forEach(function(t,j){
@@ -293,9 +308,10 @@ dialog::backdrop{background:#0005}dialog h2{font-size:17px;margin:0 0 7px}dialog
           const vertical=dy===0?'no vertical shift':num(Math.abs(dy))+' px ('+num(Math.abs(dy)/b.height*100)+'%) '+(dy<0?'up':'down');
           out.push('- Move together: '+horizontal+'; '+vertical+'. Preserve relative spacing, size, content, and styling unless this instruction says otherwise.');
         }
-        if(a.steps)out.push('- Reproduction steps: '+a.steps.replace(/\n/g,'\n  '));
-        if(a.actual)out.push('- '+(a.type==='Copy'?'Current text':'Actual result')+': '+a.actual.replace(/\n/g,'\n  '));
-        if(a.expected)out.push('- '+(a.type==='Copy'?'Replacement text':'Expected result / acceptance check')+': '+a.expected.replace(/\n/g,'\n  '));
+        if(a.steps)out.push('- Reproduction steps: '+eol(a.steps).replace(/\n/g,'\n  '));
+        if(a.actual)out.push('- '+(a.type==='Copy'?'Current text: '+exact(a.actual):'Actual result: '+eol(a.actual).replace(/\n/g,'\n  ')));
+        if(a.type==='Copy')out.push('- Replacement text: '+exact(a.expected));
+        else if(a.expected)out.push('- '+('Expected result / acceptance check: '+eol(a.expected).replace(/\n/g,'\n  ')));
         out.push('');
       });
     });
@@ -307,15 +323,15 @@ dialog::backdrop{background:#0005}dialog h2{font-size:17px;margin:0 0 7px}dialog
     out.push('- If target identity or intent is ambiguous, ask for clarification.','');
     return out.join('\n');
   }
-  globalThis.MarkupCore={Store:Store,validateProject:validateProject,buildPrompt:buildPrompt,translatedTargets:translatedTargets,bounds:bounds,TYPES:TYPES,imageName:imageName,targetLine:targetLine};
+  globalThis.MarkupCore={included:included,MAX_PIXELS:MAX_PIXELS,Store:Store,validateProject:validateProject,validateTarget:validateTarget,buildPrompt:buildPrompt,translatedTargets:translatedTargets,bounds:bounds,TYPES:TYPES,imageName:imageName,targetLine:targetLine};
 })();
 </script>
 <script id="markup-app">
 (function () {
   'use strict';
   const $=function(s){return document.querySelector(s);}, Core=globalThis.MarkupCore;
-  const store=new Core.Store(), assets=new Map(), cv=$('#cv'),ctx=cv.getContext('2d'),stage=$('#stage'),board=$('#board');
-  const UI={tool:'pin',filter:'open',selected:null,edit:null,targets:[],groupEditId:null,placingMove:false,moveAnchor:null,hover:null,drag:null,preview:null,scale:1,fit:true,space:false,labels:false,restoring:true,loading:false,exporting:false,saveTimer:null,saveRunning:false,saveQueued:false,db:null,storageFailed:false};
+  const bc=globalThis.BroadcastChannel?new BroadcastChannel('ssmd-workspace'):null,store=new Core.Store(), assets=new Map(), cv=$('#cv'),ctx=cv.getContext('2d'),stage=$('#stage'),board=$('#board');
+  const UI={tool:'pin',filter:'open',selected:null,edit:null,targets:[],groupEditId:null,placingMove:false,moveAnchor:null,hover:null,drag:null,preview:null,scale:1,fit:true,space:false,labels:false,restoring:true,loading:false,exporting:false,saveTimer:null,saveRunning:false,saveQueued:false,db:null,storageFailed:false,unsaved:false,conflict:false,rev:0,privacy:false,holdSave:false,staleRedact:false,gen:0,saveChain:Promise.resolve(),redactChain:Promise.resolve(),badRecord:null,touches:new Set()};
   const COLOR='#355f40',BLUE='#3567d4',GRAY='#7e8776',FONT='-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif';
   const clone=function(v){return JSON.parse(JSON.stringify(v));},clamp=function(v,a,b){return Math.max(a,Math.min(b,v));};
   const active=function(){return store.state.boards.find(function(b){return b.id===store.state.activeId;});};
@@ -323,20 +339,21 @@ dialog::backdrop{background:#0005}dialog h2{font-size:17px;margin:0 0 7px}dialog
   let toastTimer;
   function toast(message){$('#status').textContent=message;clearTimeout(toastTimer);toastTimer=setTimeout(function(){$('#status').textContent='';},6500);}
   function uid(){return 's'+crypto.randomUUID().replace(/-/g,'');}
-  function saveStatus(message){$('#saveState').textContent=message;}
+  function saveStatus(message){const el=$('#saveState');el.textContent=UI.conflict?'Changed in another tab · save a project':UI.staleRedact?'Redacted in another tab · reload before exporting':UI.holdSave?'Saved workspace not restored · autosave off':UI.privacy?'Redaction not saved yet · older copy still on this device':message;el.classList.toggle('warn',UI.storageFailed||UI.conflict||UI.staleRedact||UI.holdSave||UI.privacy);}
   function included(a){return $('#includeDone').checked||!a.done;}
   function selecting(){return UI.targets.length>0||UI.groupEditId!==null||UI.placingMove;}
   function beforeAction(){if(UI.restoring||UI.loading){toast('Wait for the screenshots to finish opening.');return false;}if(selecting()){toast('Finish or cancel the current target selection first.');return false;}return saveEditor(true);}
-  function changed(){renderAll();queueSave();}
+  function changed(){pruneAssets();renderAll();queueSave();}
+  function pruneAssets(){const keep=store.imageIds();assets.forEach(function(v,k){if(!keep.has(k))assets.delete(k);});}
   function openDB(){return new Promise(function(resolve,reject){if(!globalThis.indexedDB){reject(Error('Storage unavailable'));return;}const r=indexedDB.open('screenshot-markup-workspace',1);r.onupgradeneeded=function(){r.result.createObjectStore('workspace');};r.onsuccess=function(){resolve(r.result);};r.onerror=function(){reject(r.error);};});}
   function dbGet(){return new Promise(function(resolve,reject){const r=UI.db.transaction('workspace').objectStore('workspace').get('current');r.onsuccess=function(){resolve(r.result);};r.onerror=function(){reject(r.error);};});}
   function projectRecord(){return {format:'screenshot-markup',version:2,state:clone(store.state),images:store.state.boards.map(function(b){const a=assets.get(b.id);return {id:b.id,src:a.src};})};}
-  function queueSave(){if(UI.restoring)return;saveStatus(UI.storageFailed?'Save a project to keep changes':'Saving…');UI.saveQueued=true;clearTimeout(UI.saveTimer);UI.saveTimer=setTimeout(function(){UI.saveTimer=null;flushSave();},450);}
-  async function flushSave(){
-    if(UI.saveRunning||UI.storageFailed||!UI.db)return;UI.saveRunning=true;
-    try{while(UI.saveQueued){UI.saveQueued=false;const record=projectRecord();await new Promise(function(resolve,reject){const t=UI.db.transaction('workspace','readwrite');t.objectStore('workspace').put(record,'current');t.oncomplete=resolve;t.onerror=function(){reject(t.error);};t.onabort=function(){reject(t.error);};});}saveStatus('Saved on this device');}
-    catch(e){UI.storageFailed=true;saveStatus('Save a project to keep changes');toast('Automatic saving is unavailable. Use Project → Save editable project.');}
-    finally{UI.saveRunning=false;}
+  function queueSave(){if(UI.restoring)return;UI.unsaved=true;saveStatus(UI.storageFailed?'Not saved · save a project':'Saving…');UI.saveQueued=true;clearTimeout(UI.saveTimer);UI.saveTimer=setTimeout(function(){UI.saveTimer=null;flushSave();},450);}
+  function flushSave(){UI.saveChain=UI.saveChain.then(doFlush,doFlush);return UI.saveChain;}
+  async function doFlush(){
+    if(UI.conflict||UI.holdSave||!UI.db)return false;
+    try{while(UI.saveQueued){UI.saveQueued=false;const record=projectRecord();record.rev=UI.rev+1;await new Promise(function(resolve,reject){const t=UI.db.transaction('workspace','readwrite'),os=t.objectStore('workspace'),g=os.get('current');g.onsuccess=function(){const cur=g.result;if((cur&&cur.rev||0)!==UI.rev){UI.conflict=true;t.abort();return;}try{os.put(record,'current');}catch(err){t.abort();reject(err);}};t.oncomplete=resolve;t.onerror=function(){reject(t.error);};t.onabort=function(){reject(t.error||Error('aborted'));};});UI.rev++;}UI.storageFailed=false;UI.privacy=false;if(!UI.saveQueued)UI.unsaved=false;saveStatus('Saved on this device');return true;}
+    catch(e){UI.storageFailed=true;if(UI.conflict){saveStatus('Changed in another tab · save a project');toast('This workspace was changed in another tab, so this tab stopped saving. Use Project → Save editable project, then reload.');}else{saveStatus('Not saved · save a project');toast('Automatic saving is unavailable. Use Project → Save editable project.');}return false;}
   }
   function imageFrom(src){return new Promise(function(resolve,reject){const im=new Image();im.onload=function(){resolve(im);};im.onerror=function(){reject(Error('Could not read an image.'));};im.src=src;});}
   async function hydrate(record){
@@ -352,26 +369,29 @@ dialog::backdrop{background:#0005}dialog h2{font-size:17px;margin:0 0 7px}dialog
   }
   async function addFiles(files){
     if(UI.restoring||!beforeAction())return;
-    let added=0;UI.loading=true;renderAll();
+    let added=0;const errors=[];UI.loading=true;renderAll();
     for(const f of files){
       try{
-        if(!f||!/^image\//.test(f.type))throw Error('Choose an image file.');
-        if(f.size>20*1024*1024)throw Error('Each image must be under 20 MB.');
+        if(!f||!/^image\//.test(f.type))throw Error('not an image file.');
+        if(f.size>20*1024*1024)throw Error('over 20 MB. Crop or scale it first.');
+        const head=new DataView(await f.slice(0,32).arrayBuffer());
+        if(head.byteLength>=24&&head.getUint32(0)===0x89504e47){const pw=head.getUint32(16),ph=head.getUint32(20);if(pw>16000||ph>16000||pw*ph>48000000)throw Error('too large ('+pw+' × '+ph+' px). Limit: 16,000 px per side and 48 megapixels. Crop or scale it first.');}
         const url=URL.createObjectURL(f);let im;
         try{im=await imageFrom(url);}finally{URL.revokeObjectURL(url);}
         const w=im.naturalWidth,h=im.naturalHeight;
-        if(w>16000||h>16000||w*h>48000000)throw Error('This screenshot is too large. Use an image up to 48 megapixels and 16,000 px per side.');
-        if(store.state.boards.length>=30)throw Error('This project already has 30 screenshots.');
+        if(w>16000||h>16000||w*h>48000000)throw Error('too large. Limit: 16,000 px per side and 48 megapixels.');
+        if(store.state.boards.length>=30)throw Error('this project already has 30 screenshots.');
+        let px=0;assets.forEach(function(v){px+=v.img.naturalWidth*v.img.naturalHeight;});if(px+w*h>Core.MAX_PIXELS)throw Error('would exceed the '+Core.MAX_PIXELS/1e6+' megapixel workspace limit (closed screenshots stay in Undo history). Save a project, then start a new workspace.');
         const c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(im,0,0);
         const src=c.toDataURL('image/png'),id=uid();
         const used=store.state.boards.reduce(function(n,b){return n+assets.get(b.id).src.length;},0);
-        if(used+src.length>90*1024*1024)throw Error('These screenshots exceed the 90 MB workspace limit. Save this project, then start a separate one.');
+        if(used+src.length>90*1024*1024)throw Error('the workspace is full (90 MB of image data). Save a project, then start a new workspace.');
         assets.set(id,{src:src,img:im});
         store.addBoard({id:id,title:(f.name||'Pasted screenshot').replace(/\.[^.]+$/,'').slice(0,160),width:w,height:h});
         closeEditor();UI.fit=true;UI.selected=null;added++;changed();
-      }catch(e){toast(e.message);}
+      }catch(e){errors.push((f&&f.name||'Pasted image')+': '+e.message.replace(/^./,function(c){return c.toLowerCase();}));}
     }
-    UI.loading=false;renderAll();if(added)toast(added+' screenshot'+(added===1?'':'s')+' added. Pick a tool to mark the change.');
+    UI.loading=false;renderAll();if(added||errors.length)toast((added?added+' screenshot'+(added===1?'':'s')+' added. ':'')+(errors.length?errors.length+' not added — '+errors.slice(0,3).join(' · ')+(errors.length>3?' …':''):'Pick a tool to mark the change.'));
   }
   async function sample(){
     const c=document.createElement('canvas');c.width=1200;c.height=820;const g=c.getContext('2d');
@@ -430,6 +450,19 @@ dialog::backdrop{background:#0005}dialog h2{font-size:17px;margin:0 0 7px}dialog
     const k=clamp(b.width/1200,.8,3);b.annotations.filter(function(a){return opts.includeDone||!a.done;}).forEach(function(a){drawAnnotation(g,a,k,b,{labels:opts.labels});});return c;
   }
   function exportBlob(b,options){return new Promise(function(resolve,reject){exportCanvas(b,options).toBlob(function(blob){if(blob)resolve(blob);else reject(Error('Could not render the image.'));},'image/png');});}
+  const REDACT_NOTE='This changes the screenshot itself (and identical copies of it in this workspace) in the workspace, saved projects and exports made from now on. Files you already saved or downloaded, other copies and text you typed are not changed. Undo cannot restore it.';
+  function redact(id,t){UI.redactChain=UI.redactChain.then(function(){return doRedact(id,t);});return UI.redactChain;}
+  async function doRedact(id,t){
+    const a=assets.get(id),b=store.state.boards.find(function(x){return x.id===id;});if(!a||!b)return;
+    try{const c=document.createElement('canvas');c.width=b.width;c.height=b.height;const g=c.getContext('2d');g.drawImage(a.img,0,0);g.fillStyle='#000';g.fillRect(Math.floor(t.x),Math.floor(t.y),Math.ceil(t.w)+1,Math.ceil(t.h)+1);
+      const src=c.toDataURL('image/png'),img=await imageFrom(src),orig=a.src,done={src:src,img:img};
+      assets.forEach(function(v,k){if(v.src===orig)assets.set(k,done);});
+      UI.gen++;UI.privacy=!!UI.db;if(globalThis.BroadcastChannel)try{bc.postMessage({type:'redacted'});}catch(e){}
+      queueSave();draw();clearTimeout(UI.saveTimer);UI.saveTimer=null;toast('Area blacked out on screen. Saving…');
+      const ok=await flushSave();saveStatus('Saved on this device');
+      toast(!UI.db?'Area blacked out. Storage is unavailable here, so nothing older is stored; exports use the blacked-out image.':ok?'Area blacked out and saved on this device.':'Area blacked out on screen, but an older copy is still stored on this device. Retry by editing again, or save an editable project and reload.');}
+    catch(e){toast('Could not redact: '+e.message);}
+  }
   function point(e){const b=active(),r=cv.getBoundingClientRect();return{x:clamp((e.clientX-r.left)/r.width*b.width,0,b.width),y:clamp((e.clientY-r.top)/r.height*b.height,0,b.height)};}
   function boxFrom(a,b){return{kind:'box',x:Math.min(a.x,b.x),y:Math.min(a.y,b.y),w:Math.abs(b.x-a.x),h:Math.abs(b.y-a.y)};}
   function distance(p,t){if(t.kind==='box'){if(p.x>=t.x&&p.x<=t.x+t.w&&p.y>=t.y&&p.y<=t.y+t.h)return 0;return Infinity;}if(t.kind==='arrow'){const dx=t.toX-t.x,dy=t.toY-t.y,l=dx*dx+dy*dy||1,q=clamp(((p.x-t.x)*dx+(p.y-t.y)*dy)/l,0,1);return Math.hypot(p.x-t.x-q*dx,p.y-t.y-q*dy);}return Math.hypot(p.x-t.x,p.y-t.y);}
@@ -453,13 +486,15 @@ dialog::backdrop{background:#0005}dialog h2{font-size:17px;margin:0 0 7px}dialog
     box:'Drag around an object or region, then describe the desired result.',
     group:'Click multiple objects or drag areas. Click a selected point to remove it. Finish with one shared instruction or move the group.',
     move:'Drag from an object’s current position to its destination. The blue arrow shows the requested movement.',
-    arrow:'Drag toward the object you mean. Use the side editor to explain the change.'
+    arrow:'Drag toward the object you mean. Use the side editor to explain the change.',
+    redact:'Drag over anything sensitive to black it out permanently in this screenshot. Undo cannot restore it. Typed text is not redacted.'
   };
   function setHelp(){$('#toolHelp').textContent=UI.placingMove?'Click where the center of this group should go. Its spacing will stay the same.':active()?help[UI.tool]:'Add a screenshot to start, or try the sample below.';}
   cv.addEventListener('pointerdown',function(e){
     if(!active()||UI.loading||UI.restoring||e.button!==0)return;
-    if(UI.space){UI.drag={pan:true,sx:e.clientX,sy:e.clientY,left:stage.scrollLeft,top:stage.scrollTop};cv.setPointerCapture(e.pointerId);cv.style.cursor='grabbing';return;}
-    if(UI.placingMove){finishMove(point(e));return;}
+    if(e.pointerType==='touch')UI.touches.add(e.pointerId);
+    if(UI.space||UI.touches.size>1){UI.preview=null;UI.drag={pan:true,pid:e.pointerId,sx:e.clientX,sy:e.clientY,left:stage.scrollLeft,top:stage.scrollTop};cv.setPointerCapture(e.pointerId);cv.style.cursor='grabbing';draw();return;}
+    if(UI.placingMove){if(e.pointerType!=='touch'){finishMove(point(e));return;}UI.drag={place:true,pid:e.pointerId};cv.setPointerCapture(e.pointerId);return;}
     if(!saveEditor(true))return;
     const p=point(e),h=UI.tool==='select'?hit(p):null;
     if(h){UI.selected=h.a.id;UI.drag={start:p,sx:e.clientX,sy:e.clientY,hit:h,base:clone(h.a),moved:false};}
@@ -468,7 +503,7 @@ dialog::backdrop{background:#0005}dialog h2{font-size:17px;margin:0 0 7px}dialog
   });
   cv.addEventListener('pointermove',function(e){
     if(!active())return;
-    const d=UI.drag;if(d&&d.pan){stage.scrollLeft=d.left-(e.clientX-d.sx);stage.scrollTop=d.top-(e.clientY-d.sy);return;}
+    const d=UI.drag;if(d&&d.pan){if(d.pid!==e.pointerId)return;stage.scrollLeft=d.left-(e.clientX-d.sx);stage.scrollTop=d.top-(e.clientY-d.sy);return;}
     const p=point(e);
     if(UI.placingMove){const b=active(),m=Core.translatedTargets(UI.targets,p.x-UI.moveAnchor.x,p.y-UI.moveAnchor.y,b.width,b.height);UI.preview={id:'placement',number:b.nextNumber,type:'Move',targets:UI.targets,move:{dx:m.dx,dy:m.dy},text:'',done:false};draw();return;}
     if(!d){const h=UI.tool==='select'?hit(p):null;const next=h?h.a.id:null;if(next!==UI.hover){UI.hover=next;cv.style.cursor=h?'grab':UI.tool==='select'?'default':'crosshair';draw();}return;}
@@ -479,13 +514,15 @@ dialog::backdrop{background:#0005}dialog h2{font-size:17px;margin:0 0 7px}dialog
       if(d.hit.part==='destination'){const m=Core.translatedTargets(a.targets,a.move.dx+dx,a.move.dy+dy,b.width,b.height);a.move={dx:m.dx,dy:m.dy};}
       else{const m=Core.translatedTargets(a.targets,dx,dy,b.width,b.height);a.targets=m.targets;if(a.move){const fixed=Core.translatedTargets(a.targets,a.move.dx,a.move.dy,b.width,b.height);a.move={dx:fixed.dx,dy:fixed.dy};}}
       UI.preview=a;
-    }else if(UI.tool==='box'||UI.tool==='group'){d.draft=boxFrom(d.start,p);}
+    }else if(UI.tool==='box'||UI.tool==='group'||UI.tool==='redact'){d.draft=boxFrom(d.start,p);}
     else if(UI.tool==='arrow'){d.draft={kind:'arrow',x:d.start.x,y:d.start.y,toX:p.x,toY:p.y};}
     else if(UI.tool==='move'){UI.preview={id:'placement',number:b.nextNumber,type:'Move',targets:[{kind:'pin',x:d.start.x,y:d.start.y}],move:{dx:p.x-d.start.x,dy:p.y-d.start.y},text:'',done:false};}
     draw();if(UI.tool==='move'&&UI.preview)drawAnnotation(ctx,UI.preview,unit(),b,false);
   });
   cv.addEventListener('pointerup',function(e){
-    const d=UI.drag;if(!d)return;UI.drag=null;
+    UI.touches.delete(e.pointerId);
+    const d=UI.drag;if(!d)return;if((d.pan||d.place)&&d.pid!==e.pointerId)return;UI.drag=null;
+    if(d.place){if(UI.placingMove)finishMove(point(e));return;}
     if(d.pan){cv.style.cursor=UI.space?'grab':'crosshair';return;}
     const p=point(e),b=active();
     if(d.hit){if(d.moved&&UI.preview){store.updateAnnotation(b.id,d.hit.a.id,{targets:UI.preview.targets,move:UI.preview.move});UI.preview=null;changed();}openEditor(d.hit.a.id);return;}
@@ -496,6 +533,7 @@ dialog::backdrop{background:#0005}dialog h2{font-size:17px;margin:0 0 7px}dialog
       else{const index=UI.targets.findIndex(function(t){return t.kind==='pin'&&distance(p,t)<16*unit();});if(index>=0)UI.targets.splice(index,1);else UI.targets.push({kind:'pin',x:p.x,y:p.y});}
       if(UI.targets.length>200){UI.targets.pop();toast('A group can contain up to 200 targets.');}renderSelection();draw();return;
     }
+    if(UI.tool==='redact'){if(d.moved){const t=boxFrom(d.start,p);if(t.w*UI.scale>=6&&t.h*UI.scale>=6)confirmAction('Permanently black out this area?',REDACT_NOTE,function(){redact(b.id,t);});}draw();return;}
     if(UI.tool==='pin'){if(!d.moved)openNew([{kind:'pin',x:p.x,y:p.y}]);}
     else if(UI.tool==='box'&&d.moved){const t=boxFrom(d.start,p);if(t.w*UI.scale>=6&&t.h*UI.scale>=6)openNew([t]);}
     else if((UI.tool==='move'||UI.tool==='arrow')&&d.moved&&Math.hypot(p.x-d.start.x,p.y-d.start.y)*UI.scale>=8){
@@ -503,7 +541,7 @@ dialog::backdrop{background:#0005}dialog h2{font-size:17px;margin:0 0 7px}dialog
       else openNew([{kind:'arrow',x:d.start.x,y:d.start.y,toX:p.x,toY:p.y}]);
     }draw();
   });
-  cv.addEventListener('pointercancel',function(){UI.drag=null;UI.preview=null;draw();});
+  cv.addEventListener('pointercancel',function(e){UI.touches.delete(e.pointerId);if(UI.drag&&(UI.drag.pan||UI.drag.place)&&UI.drag.pid!==e.pointerId)return;UI.drag=null;UI.preview=null;draw();});
   function renderSelection(){const n=UI.targets.length;$('#selectionBar').hidden=!selecting();$('#selectionCount').textContent=n+' target'+(n===1?'':'s')+(UI.placingMove?' · choose destination':'');$('#pointUndo').disabled=!n||UI.placingMove;$('#finishGroup').disabled=!n||UI.placingMove;$('#moveGroup').disabled=!n||UI.placingMove;renderExport();}
   function finishGroup(){if(!UI.targets.length)return;const targets=clone(UI.targets),existing=UI.groupEditId;resetSelection();if(existing){const a=annotation(existing);openEditor(existing);UI.edit.targets=targets;draw();renderTargets();}else openNew(targets);}
   function finishMove(p){const b=active(),targets=clone(UI.targets),existing=UI.groupEditId,m=Core.translatedTargets(targets,p.x-UI.moveAnchor.x,p.y-UI.moveAnchor.y,b.width,b.height);resetSelection();if(existing){openEditor(existing);UI.edit.targets=targets;UI.edit.move={dx:m.dx,dy:m.dy};UI.edit.type='Move';fillEditor();draw();}else openNew(targets,{dx:m.dx,dy:m.dy});}
@@ -517,7 +555,7 @@ dialog::backdrop{background:#0005}dialog h2{font-size:17px;margin:0 0 7px}dialog
     UI.selected=null;UI.edit={id:null,targets:clone(targets),move:move||null,type:move?'Move':'Change',text:move?'Move '+(targets.length>1?'these objects together':'this object')+' to the marked destination.':'',priority:'normal',done:false,expected:'',actual:'',steps:'',locator:''};fillEditor();draw();$('#noteText').focus();
   }
   function openEditor(aid){const a=annotation(aid);if(!a)return;UI.edit=clone(a);UI.selected=aid;fillEditor();draw();renderList();}
-  function editorData(){if(!UI.edit)return null;return Object.assign({},UI.edit,{type:$('#noteType').value,text:$('#noteText').value.trim(),priority:$('#notePriority').value,steps:$('#noteSteps').value.trim(),actual:$('#noteType').value==='Copy'?$('#currentText').value:$('#noteActual').value.trim(),expected:$('#noteExpected').value.trim(),locator:$('#noteLocator').value.trim()});}
+  function editorData(){if(!UI.edit)return null;return Object.assign({},UI.edit,{type:$('#noteType').value,text:$('#noteText').value.trim(),priority:$('#notePriority').value,steps:$('#noteSteps').value.trim(),actual:$('#noteType').value==='Copy'?$('#currentText').value:$('#noteActual').value.trim(),expected:$('#noteType').value==='Copy'?$('#noteExpected').value:$('#noteExpected').value.trim(),locator:$('#noteLocator').value.trim()});}
   function saveEditor(implicit){
     if(!UI.edit)return true;
     const a=editorData();if(!a.text){if(implicit&&!a.id&&!a.steps&&!a.actual&&!a.expected&&!a.locator){closeEditor();return true;}$('#noteText').focus();toast('Write a short instruction before saving.');return false;}
@@ -525,14 +563,25 @@ dialog::backdrop{background:#0005}dialog h2{font-size:17px;margin:0 0 7px}dialog
     try{if(a.id)store.updateAnnotation(b.id,a.id,a);else{delete a.id;const saved=store.addAnnotation(b.id,a);UI.selected=saved.id;}closeEditor();changed();return true;}
     catch(e){toast(e.message);return false;}
   }
-  function fillEditor(){const a=UI.edit,b=active();if(!a||!b)return;$('#editor').hidden=false;$('#editorTitle').textContent=(a.id?'Instruction #'+a.number:'New instruction')+(a.targets.length>1?' · '+a.targets.length+' targets':a.targets.length?'':' · General');
+  function editorTitle(){const a=UI.edit;$('#editorTitle').textContent=(a.id?'Instruction #'+a.number:'New instruction')+(a.targets.length>1?' · '+a.targets.length+' targets':a.targets.length?'':' · General');}
+  function fillEditor(){const a=UI.edit,b=active();if(!a||!b)return;$('#editor').hidden=false;editorTitle();
     $('#noteType').value=a.type;$('#noteType').disabled=!!a.move;
     Array.from($('#noteType').options).forEach(function(o){if(o.value==='Move')o.disabled=!a.move;});
     $('#notePriority').value=a.priority;$('#noteText').value=a.text;$('#noteSteps').value=a.steps;$('#noteActual').value=a.actual;$('#currentText').value=a.actual;$('#noteExpected').value=a.expected;$('#noteLocator').value=a.locator;
-    $('#deleteNote').hidden=!a.id;$('#editTargets').hidden=!!a.move;typeFields();renderTargets();renderExport();
+    $('#deleteNote').hidden=!a.id;$('#editTargets').hidden=!!a.move;$('#addRow').hidden=!!a.move;typeFields();renderTargets();renderExport();
   }
   function typeFields(){const t=$('#noteType').value;$('#bugFields').hidden=t!=='Bug';$('#copyFields').hidden=t!=='Copy';$('#textLabel').textContent=t==='Bug'?'What is the problem?':'What should change?';$('#expectedLabel').textContent=t==='Bug'?'Expected behavior':t==='Copy'?'Replacement text':'Success looks like (optional)';$('#noteExpected').placeholder=t==='Copy'?'Exact replacement wording…':t==='Bug'?'What should happen instead?':'e.g. Equal gaps at desktop and mobile sizes';}
-  function renderTargets(){const a=UI.edit;if(!a)return;const list=$('#targetList');list.textContent='';a.targets.forEach(function(t,i){const li=document.createElement('li'),span=document.createElement('span'),btn=document.createElement('button');span.textContent=(i+1)+'. '+t.kind+' · '+Math.round(t.x)+', '+Math.round(t.y)+' px';btn.type='button';btn.textContent='×';btn.setAttribute('aria-label','Remove target '+(i+1));btn.disabled=!!a.move;btn.addEventListener('click',function(){UI.edit.targets.splice(i,1);renderTargets();draw();});li.append(span,btn);list.append(li);});}
+  const FIELDS={pin:['x','y'],box:['x','y','w','h'],arrow:['x','y','toX','toY']};
+  function checkMove(targets,m,b){targets.forEach(function(t){const d=Object.assign({},t,{x:t.x+m.dx,y:t.y+m.dy});if(t.kind==='arrow'){d.toX=t.toX+m.dx;d.toY=t.toY+m.dy;}Core.validateTarget(d,b.width,b.height);});}
+  function numField(label,value,onChange,short){const wrap=document.createElement('label'),inp=document.createElement('input');wrap.append(short+' ',inp);inp.type='number';inp.step='1';let cur=value;inp.value=Math.round(cur*10)/10;inp.setAttribute('aria-label',label);inp.addEventListener('change',function(){const v=inp.value.trim()===''?NaN:Number(inp.value);try{onChange(v);cur=v;draw();}catch(e){inp.value=Math.round(cur*10)/10;toast(e.message);}});return wrap;}
+  function renderTargets(){const a=UI.edit;if(!a)return;editorTitle();const list=$('#targetList'),b=active();list.textContent='';a.targets.forEach(function(t,i){const li=document.createElement('li'),span=document.createElement('span'),btn=document.createElement('button');span.textContent=(i+1)+'. '+t.kind;btn.type='button';btn.textContent='×';btn.setAttribute('aria-label','Remove target '+(i+1));btn.disabled=!!a.move;btn.addEventListener('click',function(){UI.edit.targets.splice(i,1);renderTargets();draw();toast(UI.edit.targets.length+' target'+(UI.edit.targets.length===1?'':'s')+' in this instruction.');});li.append(span);
+      FIELDS[t.kind].forEach(function(f){li.append(numField('Target '+(i+1)+' '+f+' (px)',t[f],function(v){const next=Core.validateTarget(Object.assign({},UI.edit.targets[i],{[f]:v}),b.width,b.height);if(UI.edit.move)checkMove([next],UI.edit.move,b);UI.edit.targets[i]=next;},f));});li.append(btn);list.append(li);});
+    if(a.move){const li=document.createElement('li'),span=document.createElement('span');span.textContent='Move by';li.append(span);
+      [['dx','right'],['dy','down']].forEach(function(f){li.append(numField('Move '+f[1]+' (px, negative for '+(f[0]==='dx'?'left':'up')+')',a.move[f[0]],function(v){const m={dx:a.move.dx,dy:a.move.dy};m[f[0]]=v;if(!Number.isFinite(v))throw Error('Enter a number.');checkMove(UI.edit.targets,m,b);UI.edit.move=m;},f[0]));});list.append(li);}}
+  $('#addTarget').addEventListener('click',function(){const a=UI.edit,b=active(),kind=$('#addKind').value;if(!a||!b)return;if(a.targets.length>=200){toast('An instruction can contain up to 200 targets.');return;}
+    const cx=b.width/2,cy=b.height/2,w=Math.min(120,b.width/4),h=Math.min(80,b.height/4);
+    if(kind==='move'){if(a.targets.length){toast('A move needs its own instruction. Remove other targets first.');return;}const m=Core.translatedTargets([{kind:'pin',x:cx,y:cy}],Math.min(100,b.width/4),0,b.width,b.height);Object.assign(a,editorData());a.targets=[{kind:'pin',x:cx,y:cy}];a.move={dx:m.dx,dy:m.dy};a.type='Move';if(!a.text)a.text='Move this object to the marked destination.';fillEditor();draw();return;}
+    a.targets.push(kind==='box'?{kind:'box',x:cx-w/2,y:cy-h/2,w:w,h:h}:kind==='arrow'?{kind:'arrow',x:cx-w/2,y:cy,toX:cx+w/2,toY:cy}:{kind:'pin',x:cx,y:cy});renderTargets();draw();toast(a.targets.length+' target'+(a.targets.length===1?'':'s')+' in this instruction.');});
   $('#noteType').addEventListener('change',typeFields);
   $('#saveNote').addEventListener('click',function(){if(saveEditor(false))cv.focus({preventScroll:true});});
   function cancelEdit(){closeEditor();UI.selected=null;draw();renderList();renderExport();cv.focus({preventScroll:true});}
@@ -550,14 +599,22 @@ dialog::backdrop{background:#0005}dialog h2{font-size:17px;margin:0 0 7px}dialog
       li.append(open,done);li.addEventListener('mouseenter',function(){UI.hover=a.id;draw();});li.addEventListener('mouseleave',function(){UI.hover=null;draw();});list.append(li);
     });
   }
-  function renderBoards(){const nav=$('#boardTabs');nav.textContent='';nav.hidden=!store.state.boards.length;
-    store.state.boards.forEach(function(b){const btn=document.createElement('button'),span=document.createElement('span'),count=document.createElement('b');btn.type='button';btn.className='board-tab'+(b.id===store.state.activeId?' active':'');btn.setAttribute('aria-current',b.id===store.state.activeId?'page':'false');span.textContent=b.title;count.textContent=b.annotations.filter(function(a){return !a.done;}).length;btn.append(span,count);btn.addEventListener('click',function(){if(!beforeAction())return;store.state.activeId=b.id;UI.selected=null;closeEditor();UI.fit=true;renderAll();queueSave();});nav.append(btn);});
+  function renderBoards(){const nav=$('#boardTabs'),boards=store.state.boards;nav.textContent='';nav.hidden=!boards.length;
+    boards.forEach(function(b,idx){const on=b.id===store.state.activeId,tab=document.createElement('div'),btn=document.createElement('button'),span=document.createElement('span'),count=document.createElement('b'),x=document.createElement('button');
+      tab.className='tab'+(on?' active':'');btn.type='button';btn.className='tab-main';btn.setAttribute('aria-current',on?'page':'false');span.textContent=b.title;count.textContent=b.annotations.filter(function(a){return !a.done;}).length;count.title='Open instructions';btn.append(span,count);
+      btn.addEventListener('click',function(){if(!beforeAction())return;store.state.activeId=b.id;UI.selected=null;closeEditor();UI.fit=true;renderAll();queueSave();});
+      x.type='button';x.className='tab-close';x.textContent='×';x.title='Close screenshot (Undo restores it)';x.setAttribute('aria-label','Close '+b.title);
+      x.addEventListener('click',function(){if(!beforeAction())return;const wasActive=on;store.deleteBoard(b.id);if(wasActive&&store.state.boards.length)store.state.activeId=store.state.boards[Math.min(idx,store.state.boards.length-1)].id;UI.selected=null;closeEditor();UI.fit=true;changed();toast('Closed '+b.title+'. Undo (⌘/Ctrl Z) brings it back.');});
+      tab.append(btn,x);nav.append(tab);});
+    const add=document.createElement('button');add.type='button';add.className='tab-new';add.textContent='＋ New';add.title='Add screenshots (or paste with ⌘/Ctrl V)';add.setAttribute('aria-label','Add screenshots');add.disabled=UI.loading||UI.restoring;add.addEventListener('click',function(){$('#file').click();});nav.append(add);
   }
   function renderExport(){
     const pending=selecting()||UI.loading||UI.restoring,b=active(),has=store.state.boards.some(function(s){return s.annotations.some(included);});
     $('#promptOut').value=Core.buildPrompt(store.state,{includeDone:$('#includeDone').checked})||'Save an instruction to generate a brief.';
     ['#downloadBundle','#copyPrompt','#saveMd'].forEach(function(s){$(s).disabled=!has||pending||(s==='#downloadBundle'&&UI.exporting);});
     ['#savePng','#copyImg'].forEach(function(s){$(s).disabled=!b||pending;});
+    const inc=store.state.boards.filter(function(x){return Core.included(x,$('#includeDone').checked);}),n=inc.reduce(function(c,x){return c+x.annotations.filter(included).length;},0);
+    $('#handoffSummary').textContent=inc.length?'Handoff contains '+inc.length+' screen'+(inc.length===1?'':'s')+' ('+inc.map(function(x){return x.title+(x.reference&&!x.annotations.some(included)?' · reference':'');}).join(', ')+') and '+n+' instruction'+(n===1?'':'s')+'.':'Nothing to hand off yet.';
     $('#saveProject').disabled=!store.state.boards.length||pending;
     $('#clearNotes').disabled=!b||!b.annotations.length||pending;
   }
@@ -568,7 +625,7 @@ dialog::backdrop{background:#0005}dialog h2{font-size:17px;margin:0 0 7px}dialog
     $('#tools').querySelectorAll('button').forEach(function(btn){btn.disabled=!on;});['#zoomOut','#zoomIn','#zoomFit','#zoomActual','#addNote'].forEach(function(s){$(s).disabled=!on;});
     $('#undoBtn').disabled=!store.canUndo&&!UI.targets.length&&!UI.edit;$('#redoBtn').disabled=!store.canRedo;
     $('#ctxIn').value=store.state.context;$('#outputMode').value=store.state.mode;
-    if(b){$('#screenTitle').value=b.title;$('#imageSize').textContent=b.width+' × '+b.height+' px';fit();}setHelp();renderBoards();renderList();renderExport();draw();
+    if(b){$('#refToggle').checked=!!b.reference;$('#screenTitle').value=b.title;$('#imageSize').textContent=b.width+' × '+b.height+' px';fit();}setHelp();renderBoards();renderList();renderExport();draw();
   }
   $('#tools').addEventListener('click',function(e){const b=e.target.closest('button');if(b&&!b.disabled)setTool(b.dataset.tool);});
   $('#filters').addEventListener('click',function(e){const btn=e.target.closest('button');if(!btn||!beforeAction())return;UI.filter=btn.dataset.filter;$('#filters').querySelectorAll('button').forEach(function(b){b.classList.toggle('active',b===btn);b.setAttribute('aria-pressed',String(b===btn));});renderList();draw();});
@@ -577,8 +634,9 @@ dialog::backdrop{background:#0005}dialog h2{font-size:17px;margin:0 0 7px}dialog
   $('#zoomFit').addEventListener('click',function(){UI.fit=true;fit();stage.scrollLeft=0;stage.scrollTop=0;draw();});
   $('#zoomActual').addEventListener('click',function(){zoom(1,true);});$('#zoomIn').addEventListener('click',function(){zoom(1.25);});$('#zoomOut').addEventListener('click',function(){zoom(.8);});
   new ResizeObserver(function(){fit();draw();}).observe(stage);
-  function undo(){if(UI.loading||UI.restoring)return;if(selecting()){if(UI.placingMove){UI.placingMove=false;UI.preview=null;renderSelection();setHelp();draw();}else if(UI.targets.length)$('#pointUndo').click();else resetSelection();return;}if(UI.edit){closeEditor();UI.selected=null;draw();renderExport();return;}if(store.undo()){UI.selected=null;UI.fit=true;changed();}}
-  function redo(){if(!beforeAction())return;if(store.redo()){UI.selected=null;UI.fit=true;changed();}}
+  function undo(){if(UI.loading||UI.restoring)return;if(selecting()){if(UI.placingMove){UI.placingMove=false;UI.preview=null;renderSelection();setHelp();draw();}else if(UI.targets.length)$('#pointUndo').click();else resetSelection();return;}if(UI.edit){if(draftDirty()){toast('Save or Close this instruction first. Undo would discard your unsaved text.');return;}closeEditor();UI.selected=null;}if(store.undo()){UI.selected=null;UI.fit=true;changed();toast('Undone.');}}
+  function draftDirty(){const d=editorData();if(!d)return false;const base=d.id?annotation(d.id):null;return base?JSON.stringify(d)!==JSON.stringify(base):!!(d.text||d.steps||d.actual||d.expected||d.locator);}
+  function redo(){if(!beforeAction())return;if(store.redo()){UI.selected=null;UI.fit=true;changed();toast('Redone.');}}
   $('#undoBtn').addEventListener('click',undo);$('#redoBtn').addEventListener('click',redo);
   $('#addNote').addEventListener('click',function(){if(beforeAction())openNew([]);});
   $('#ctxIn').addEventListener('change',function(){store.setContext(this.value);changed();});$('#ctxIn').addEventListener('input',function(){saveStatus('Context changed');});
@@ -587,6 +645,12 @@ dialog::backdrop{background:#0005}dialog h2{font-size:17px;margin:0 0 7px}dialog
   let confirmCallback=null;
   function confirmAction(title,message,run){$('#confirmTitle').textContent=title;$('#confirmText').textContent=message;confirmCallback=run;$('#confirmDialog').showModal();}
   $('#confirmNo').addEventListener('click',function(){confirmCallback=null;$('#confirmDialog').close();});$('#confirmYes').addEventListener('click',function(){const run=confirmCallback;confirmCallback=null;$('#confirmDialog').close();if(run)run();});$('#confirmDialog').addEventListener('cancel',function(){confirmCallback=null;});
+  $('#redactNumbers').addEventListener('click',function(){if(!beforeAction())return;const b=active();$('#redactNote').textContent=REDACT_NOTE;$('#rx').value=0;$('#ry').value=0;$('#rw').value=Math.round(b.width/4);$('#rh').value=Math.round(b.height/4);$('#redactDialog').showModal();$('#rx').focus();});
+  $('#redactNo').addEventListener('click',function(){$('#redactDialog').close();});
+  $('#redactYes').addEventListener('click',function(){const b=active(),t={x:+$('#rx').value,y:+$('#ry').value,w:+$('#rw').value,h:+$('#rh').value};
+    if(![t.x,t.y,t.w,t.h].every(Number.isFinite)||t.w<1||t.h<1||t.x<0||t.y<0||t.x+t.w>b.width||t.y+t.h>b.height){toast('Enter a rectangle inside the screenshot ('+b.width+' × '+b.height+' px).');return;}
+    $('#redactDialog').close();redact(b.id,t);});
+  $('#refToggle').addEventListener('change',function(){if(!beforeAction()){this.checked=active().reference;return;}store.updateBoard(active().id,{reference:this.checked});changed();});
   $('#removeScreen').addEventListener('click',function(){if(!beforeAction())return;const b=active();confirmAction('Remove '+b.title+'?','This removes its instructions from this workspace. Undo can restore the screen.',function(){store.deleteBoard(b.id);UI.selected=null;closeEditor();UI.fit=true;changed();});});
   $('#clearNotes').addEventListener('click',function(){if(!beforeAction())return;const b=active();$('#projectMenu').open=false;confirmAction('Clear this screen’s instructions?','The screenshot stays in place. Undo can restore the instructions.',function(){store.updateBoard(b.id,{annotations:[]});UI.selected=null;closeEditor();changed();});});
   $('#newProject').addEventListener('click',function(){if(!beforeAction())return;$('#projectMenu').open=false;const run=function(){store.replace({version:2,context:'',mode:'implement',activeId:null,boards:[]});UI.selected=null;closeEditor();resetSelection();UI.fit=true;changed();};if(store.state.boards.length)confirmAction('Start a new workspace?','Save an editable project first if you want a separate copy. Undo can restore this workspace.',run);else run();});
@@ -597,13 +661,14 @@ dialog::backdrop{background:#0005}dialog h2{font-size:17px;margin:0 0 7px}dialog
   document.addEventListener('paste',function(e){if(e.target.matches('input,textarea,[contenteditable]'))return;const files=Array.from((e.clipboardData&&e.clipboardData.items)||[]).filter(function(it){return /^image\//.test(it.type);}).map(function(it){return it.getAsFile();});if(files.length){e.preventDefault();addFiles(files);}});
   async function copyText(value){try{await navigator.clipboard.writeText(value);return true;}catch(e){const ta=document.createElement('textarea');ta.value=value;ta.style.cssText='position:fixed;opacity:0';document.body.append(ta);ta.select();let ok=false;try{ok=document.execCommand('copy');}catch(error){}ta.remove();return ok;}}
   function download(name,data,type){const blob=data instanceof Blob?data:new Blob([data],{type:type||'text/markdown;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(url);},30000);toast('Downloaded '+name);}
-  function readyExport(){const context=$('#ctxIn').value;if(!beforeAction())return false;if(context!==store.state.context)store.setContext(context);renderExport();queueSave();return true;}
+  function fresh(gen){if(gen!==UI.gen)throw Error('A screenshot was redacted while exporting. Nothing was delivered; export again.');}
+  function readyExport(){if(UI.staleRedact){toast('Another tab redacted a screenshot in this workspace. Reload this tab before exporting so the old pixels are not shared.');return false;}const context=$('#ctxIn').value;if(!beforeAction())return false;if(context!==store.state.context)store.setContext(context);renderExport();queueSave();return true;}
   function brief(){return Core.buildPrompt(store.state,{includeDone:$('#includeDone').checked});}
   $('#copyPrompt').addEventListener('click',async function(){if(!readyExport())return;const ok=await copyText(brief());toast(ok?'Brief copied. Attach the matching annotated images to your editor, issue, or conversation.':'Copy is unavailable. Save the brief or copy it from the preview.');});
   $('#saveMd').addEventListener('click',function(){if(readyExport())download('feedback.md',brief());});
-  $('#savePng').addEventListener('click',async function(){if(!readyExport())return;try{const b=active();download(Core.imageName(store.state.boards.indexOf(b)),await exportBlob(b));}catch(e){toast(e.message);}});
-  $('#copyImg').addEventListener('click',async function(){if(!readyExport())return;try{const blob=await exportBlob(active());await navigator.clipboard.write([new ClipboardItem({'image/png':blob})]);toast('Annotated screen copied.');}catch(e){toast('Image copy is unavailable here. Save the screen PNG instead.');}});
-  $('#saveProject').addEventListener('click',function(){if(!readyExport())return;download('screenshot-feedback.project.json',JSON.stringify(projectRecord()),'application/json');$('#projectMenu').open=false;});
+  $('#savePng').addEventListener('click',async function(){if(!readyExport())return;try{const b=active(),gen=UI.gen,blob=await exportBlob(b);fresh(gen);download(Core.imageName(store.state.boards.indexOf(b)),blob);}catch(e){toast(e.message);}});
+  $('#copyImg').addEventListener('click',async function(){if(!readyExport())return;try{const gen=UI.gen,blob=await exportBlob(active());fresh(gen);await navigator.clipboard.write([new ClipboardItem({'image/png':blob})]);toast('Annotated screen copied.');}catch(e){toast(/redacted/.test(e.message)?e.message:'Image copy is unavailable here. Save the screen PNG instead.');}});
+  $('#saveProject').addEventListener('click',function(){const broken=UI.storageFailed;if(!readyExport())return;download('screenshot-feedback.project.json',JSON.stringify(projectRecord()),'application/json');if(broken)UI.unsaved=false;$('#projectMenu').open=false;});
   const encoder=new TextEncoder();
   function crc32(bytes){let crc=-1;for(const byte of bytes){crc^=byte;for(let n=0;n<8;n++)crc=(crc>>>1)^((crc&1)?0xedb88320:0);}return(crc^-1)>>>0;}
   function zip(entries){
@@ -616,12 +681,12 @@ dialog::backdrop{background:#0005}dialog h2{font-size:17px;margin:0 0 7px}dialog
   }
   $('#downloadBundle').addEventListener('click',async function(){
     if(UI.exporting||!readyExport())return;const btn=this;UI.exporting=true;btn.disabled=true;btn.textContent='Preparing handoff…';
-    const snapshot=clone(store.state),options={includeDone:$('#includeDone').checked,labels:UI.labels,assets:new Map(assets)};
-    try{const entries=[{name:'feedback.md',data:encoder.encode(Core.buildPrompt(snapshot,options))}],state=clone(snapshot);state.boards.forEach(function(b){b.annotations=b.annotations.filter(function(a){return options.includeDone||!a.done;});});
+    const gen=UI.gen,snapshot=clone(store.state),options={includeDone:$('#includeDone').checked,labels:UI.labels,assets:new Map(assets)};
+    try{const entries=[{name:'feedback.md',data:encoder.encode(Core.buildPrompt(snapshot,options))}],state=clone(snapshot);state.boards=state.boards.map(function(b,i){b.annotations=b.annotations.filter(function(a){return options.includeDone||!a.done;});b.image=Core.imageName(i);return b;}).filter(function(b){return Core.included(b,options.includeDone);});
       entries.push({name:'feedback.json',data:encoder.encode(JSON.stringify(state,null,2))});
-      for(let i=0;i<snapshot.boards.length;i++){const b=snapshot.boards[i];if(!b.annotations.some(function(a){return options.includeDone||!a.done;}))continue;entries.push({name:Core.imageName(i),data:new Uint8Array(await(await exportBlob(b,options)).arrayBuffer())});}
-      download('screenshot-handoff.zip',zip(entries));
-    }catch(e){toast('Could not prepare the handoff: '+e.message);}finally{UI.exporting=false;btn.textContent='Download handoff';renderExport();}
+      for(let i=0;i<snapshot.boards.length;i++){const b=snapshot.boards[i];if(!Core.included(b,options.includeDone))continue;entries.push({name:Core.imageName(i),data:new Uint8Array(await(await exportBlob(b,options)).arrayBuffer())});}
+      fresh(gen);download('screenshot-handoff.zip',zip(entries));
+    }catch(e){toast(/redacted/.test(e.message)?e.message:'Could not prepare the handoff: '+e.message);}finally{UI.exporting=false;btn.textContent='Download handoff';renderExport();}
   });
   $('#openProject').addEventListener('click',function(){$('#projectFile').click();$('#projectMenu').open=false;});
   $('#projectFile').addEventListener('change',async function(){
@@ -633,6 +698,7 @@ dialog::backdrop{background:#0005}dialog h2{font-size:17px;margin:0 0 7px}dialog
     }catch(e){toast('Could not open project: '+e.message);}
   });
   $('#helpBtn').addEventListener('click',function(){$('#projectMenu').open=false;$('#helpDialog').showModal();});$('#closeHelp').addEventListener('click',function(){$('#helpDialog').close();});
+  if(bc)bc.onmessage=function(m){if(m.data&&m.data.type==='redacted'){UI.staleRedact=true;saveStatus('');toast('Another tab redacted a screenshot. Reload this tab before exporting.');}};
   const mq=matchMedia('(prefers-color-scheme: dark)');
   let theme;
   try{theme=localStorage.getItem('screenshot-markup-theme');}catch(e){}
@@ -641,7 +707,7 @@ dialog::backdrop{background:#0005}dialog h2{font-size:17px;margin:0 0 7px}dialog
   document.addEventListener('keydown',function(e){
     if(e.target.matches('input,textarea,select,[contenteditable]'))return;
     if(e.target.closest('button,summary')&&(e.key===' '||e.key==='Enter'))return;
-    if($('#confirmDialog').open||$('#helpDialog').open)return;
+    if($('#confirmDialog').open||$('#helpDialog').open||$('#redactDialog').open)return;
     const key=e.key.toLowerCase();
     if((e.metaKey||e.ctrlKey)&&key==='z'){e.preventDefault();if(e.shiftKey)redo();else undo();return;}
     if((e.metaKey||e.ctrlKey)&&key==='y'){e.preventDefault();redo();return;}
@@ -649,7 +715,7 @@ dialog::backdrop{background:#0005}dialog h2{font-size:17px;margin:0 0 7px}dialog
     if(key===' '){e.preventDefault();UI.space=true;cv.style.cursor='grab';return;}
     if(key==='escape'){e.preventDefault();resetSelection();closeEditor();UI.selected=null;renderAll();return;}
     if(key==='enter'&&UI.targets.length&&!UI.placingMove){e.preventDefault();finishGroup();return;}
-    if(key==='enter'&&UI.tool==='pin'&&e.target===cv){e.preventDefault();const r=cv.getBoundingClientRect(),s=stage.getBoundingClientRect();openNew([{kind:'pin',x:clamp((s.left+s.width/2-r.left)/UI.scale,0,active().width),y:clamp((s.top+s.height/2-r.top)/UI.scale,0,active().height)}]);return;}
+    if(key==='enter'&&UI.tool==='pin'&&e.target===cv){e.preventDefault();if(!beforeAction())return;const r=cv.getBoundingClientRect(),s=stage.getBoundingClientRect();openNew([{kind:'pin',x:clamp((s.left+s.width/2-r.left)/UI.scale,0,active().width),y:clamp((s.top+s.height/2-r.top)/UI.scale,0,active().height)}]);return;}
     if(key==='f'){$('#zoomFit').click();return;}if(key==='1'){$('#zoomActual').click();return;}
     if(['arrowleft','arrowright','arrowup','arrowdown'].includes(key)&&UI.tool==='select'&&UI.selected){
       e.preventDefault();if(!saveEditor(true))return;const a=annotation(UI.selected),step=e.shiftKey?10:1,b=active();if(!a||!a.targets.length)return;
@@ -657,15 +723,16 @@ dialog::backdrop{background:#0005}dialog h2{font-size:17px;margin:0 0 7px}dialog
       const moved=Core.translatedTargets(a.targets,dx,dy,b.width,b.height),patch={targets:moved.targets};if(a.move){const m=Core.translatedTargets(moved.targets,a.move.dx,a.move.dy,b.width,b.height);patch.move={dx:m.dx,dy:m.dy};}
       store.updateAnnotation(b.id,a.id,patch);changed();return;
     }
-    const tools={v:'select',p:'pin',b:'box',g:'group',m:'move',a:'arrow'};if(tools[key])setTool(tools[key]);
+    const tools={v:'select',p:'pin',b:'box',g:'group',m:'move',a:'arrow',r:'redact'};if(tools[key])setTool(tools[key]);
   });
   document.addEventListener('keyup',function(e){if(e.key===' '){UI.space=false;cv.style.cursor=UI.tool==='select'?'default':'crosshair';}});
-  window.addEventListener('blur',function(){UI.space=false;UI.drag=null;UI.preview=null;draw();});
-  window.addEventListener('beforeunload',function(e){if(UI.edit&&(JSON.stringify(editorData())!==JSON.stringify(annotation(UI.edit.id)))||selecting()||UI.saveRunning||UI.saveQueued||$('#ctxIn').value!==store.state.context){e.preventDefault();e.returnValue='';}});
+  window.addEventListener('blur',function(){UI.touches.clear();UI.space=false;UI.drag=null;UI.preview=null;draw();});
+  window.addEventListener('beforeunload',function(e){if(UI.edit&&(JSON.stringify(editorData())!==JSON.stringify(annotation(UI.edit.id)))||selecting()||UI.unsaved||$('#ctxIn').value!==store.state.context){e.preventDefault();e.returnValue='';}});
   async function init(){
-    try{UI.db=await openDB();const record=await dbGet();if(record){const restored=await hydrate(record);restored.assets.forEach(function(v,k){assets.set(k,v);});store.state=restored.state;}saveStatus('Saved on this device');}
-    catch(e){UI.storageFailed=true;saveStatus('Save a project to keep changes');}
+    try{UI.db=await openDB();const record=await dbGet();if(record){UI.rev=record.rev||0;try{const restored=await hydrate(record);restored.assets.forEach(function(v,k){assets.set(k,v);});store.state=restored.state;}catch(err){UI.holdSave=true;UI.badRecord={record:record,why:err.message};}}saveStatus('Saved on this device');}
+    catch(e){UI.storageFailed=true;saveStatus('Not saved · save a project');}
     UI.restoring=false;$('#addImages').disabled=false;$('#drop').disabled=false;$('#sampleBtn').disabled=false;renderAll();
+    if(UI.badRecord){saveStatus('');confirmAction('Saved workspace could not be restored',UI.badRecord.why+'. The stored data was left untouched and autosave is off. “Start fresh” downloads a backup file of it first, then begins an empty workspace. Cancel keeps autosave off so nothing is overwritten.',function(){try{download('ssmd-unrestorable-backup.json',JSON.stringify(UI.badRecord.record),'application/json');}catch(e){}UI.holdSave=false;UI.badRecord=null;saveStatus('Saved on this device');});}
   }
   renderAll();init();
 })();
