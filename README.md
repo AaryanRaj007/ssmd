@@ -5,7 +5,7 @@
 
 A local, no-server tool for telling a developer, or an AI coding agent, exactly what to change on a screen. Drop or paste screenshots, mark pins, areas, groups, moves and arrows, write instructions, then download a handoff zip containing `feedback.md`, `feedback.json` and annotated PNGs.
 
-**Run it:** open `index.html` in a browser. There's no build step and no dependencies.
+**Try it:** [aaryanraj007.github.io/ssmd](https://aaryanraj007.github.io/ssmd/), or open `index.html` locally. There's no build step and no dependencies.
 
 ## How it works
 
