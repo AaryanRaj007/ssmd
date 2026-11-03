@@ -62,11 +62,13 @@ With several tabs open, the first tab to save wins. A stale tab stops autosaving
 Requires Node 20 or newer. Run from the repo root:
 
 ```bash
-node --test test/core.test.mjs                 # core logic, no dependencies (runs in CI)
-SSMD_PW=<dir with node_modules/patchright> node --test test/app.test.mjs   # browser regressions
+node --test test/core.test.mjs   # 15 core-logic tests, no dependencies
+
+npm install --no-save playwright && npx playwright install chromium
+node --test test/app.test.mjs    # 26 browser regression tests
 ```
 
-The browser tests use Playwright if it's installed and skip when no browser library is available. Pass file paths, not the `test/` directory.
+CI runs both suites on every push. The browser tests also accept patchright (`SSMD_PW=<dir with node_modules/patchright>`) or an installed browser (`SSMD_CHANNEL=chrome`), and skip when no browser library is found. Pass file paths, not the `test/` directory.
 
 ## Licence
 
